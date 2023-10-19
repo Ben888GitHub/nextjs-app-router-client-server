@@ -10,13 +10,15 @@ export const metadata = {
 	description: 'Utilize Local Storage for Client'
 };
 
-const LocalStorageLayout = ({ children }) => {
-	return (
-		<div className={inter.className}>
-			<Header pageTitle={pageTitle} />
-			{children}
-		</div>
-	);
-};
+const LocalStorageLayout = ({ children }) => (
+	<div className={inter.className}>
+		<Header pageTitle={pageTitle} />
+		{children}
+	</div>
+);
 
 export default LocalStorageLayout;
+
+// * Reference
+// * https://stackoverflow.com/questions/75970151/is-there-a-way-to-prevent-a-root-layout-component-from-being-shown-in-some-neste
+// * https://nextjs.org/docs/app/building-your-application/routing/route-groups

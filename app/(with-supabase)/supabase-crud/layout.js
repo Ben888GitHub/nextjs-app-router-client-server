@@ -10,13 +10,11 @@ export const metadata = {
 	description: 'Utilize Supabase Crud for Server'
 };
 
-const SupabaseLayout = ({ children }) => {
-	return (
-		<div className={ubuntu.className}>
-			<Header pageTitle={pageTitle} />
-			{children}
-		</div>
-	);
-};
+const SupabaseLayout = ({ children }) => (
+	<div className={ubuntu.className}>
+		<Header pageTitle={pageTitle} />
+		{children}
+	</div>
+);
 
 export default SupabaseLayout;

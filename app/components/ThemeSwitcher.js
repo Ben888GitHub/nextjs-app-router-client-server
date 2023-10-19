@@ -19,15 +19,13 @@ const ThemeSwitcher = () => {
 	const whichMode = resolvedTheme === 'dark' ? 'light' : 'dark';
 
 	return (
-		<div>
-			<button
-				type="button"
-				className="bg-slate-500 p-3 text-lg rounded-md text-white"
-				onClick={() => setTheme(whichMode)}
-			>
-				<LightOrDark resolvedTheme={resolvedTheme} />
-			</button>
-		</div>
+		<button
+			type="button"
+			className="bg-slate-500 p-3 text-lg rounded-md text-white"
+			onClick={() => setTheme(whichMode)}
+		>
+			<LightOrDark resolvedTheme={resolvedTheme} />
+		</button>
 	);
 };
 
