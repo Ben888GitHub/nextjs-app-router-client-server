@@ -2,8 +2,8 @@ import { Inter } from 'next/font/google';
 import Header from '../components/Header';
 
 const inter = Inter({
-	subsets: ['latin']
-	//  display: 'swap'
+	subsets: ['latin'],
+	display: 'swap'
 });
 
 const pageTitle = 'Local Storage State';
