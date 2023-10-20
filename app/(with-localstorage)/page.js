@@ -1,4 +1,5 @@
 import Article from '../components/Article';
+import Posts from '../components/Posts';
 
 const articleData = {
 	title: 'Local Storage State',
@@ -13,6 +14,8 @@ export default function Home() {
 	return (
 		<>
 			<Article {...articleData} />
+
+			<Posts />
 		</>
 	);
 }

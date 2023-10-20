@@ -5,7 +5,7 @@ const inter = Inter({
 	subsets: ['latin'],
 	display: 'swap',
 	preload: false,
-	weight: '400',
+	// weight: '400',
 	variable: '--font-inter'
 });
 

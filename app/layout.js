@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body>
 				<Providers>
-					<main className="flex  flex-col items-center  justify-between p-28">
+					<main className="flex  flex-col items-center  justify-between lg:p-28  p-10 lg:mt-0 mt-16">
 						{children}
 					</main>
 				</Providers>
