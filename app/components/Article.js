@@ -4,9 +4,11 @@ const Article = ({ title, fontFamily, link }) => (
 	<>
 		<p className="lg:text-3xl text-2xl mb-3 w-full">{title}</p>
 		<p className="lg:text-2xl text-xl mb-3">Font Family: {fontFamily}</p>
-		<Link as={link.url} prefetch={false} href={link.url} className="underline">
-			{link.value}
-		</Link>
+		{link?.url && (
+			<Link as={link.url} href={link.url} className="underline">
+				{link.value}
+			</Link>
+		)}
 	</>
 );
 
