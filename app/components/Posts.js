@@ -7,11 +7,15 @@ import { generate } from 'random-words';
 import SearchPosts from './SearchPosts';
 import Post from './Post';
 import AddNewPost from './AddNewPost';
+import { usePathname } from 'next/navigation';
 
 const Posts = () => {
 	const [posts, setPosts] = useLocalStorageState('posts', {
 		defaultValue: []
 	});
+
+	const pathname = usePathname();
+
 	const [title, setTitle] = useState(''); // to add new title
 
 	const [query, setQuery] = useState(''); // search query
@@ -39,6 +43,8 @@ const Posts = () => {
 		);
 	}, [query, posts]);
 
+	console.log(pathname);
+
 	return (
 		<div className="mt-7">
 			{/* <p className="text-3xl mb-3">Search Posts</p> */}
@@ -51,7 +57,11 @@ const Posts = () => {
 			/>
 			{filteredPosts.map((filteredPost) => (
 				<Fragment key={filteredPost.id}>
-					<Post {...filteredPost} handleDeletePost={handleDeletePost} />
+					<Post
+						{...filteredPost}
+						handleDeletePost={handleDeletePost}
+						pathname={pathname}
+					/>
 				</Fragment>
 			))}
 		</div>
