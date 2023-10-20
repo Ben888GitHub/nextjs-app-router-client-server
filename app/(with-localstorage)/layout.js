@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 const LocalStorageLayout = ({ children }) => (
-	<div className={inter.className}>
+	<div lang="en" className={inter.className}>
 		<Header pageTitle={pageTitle} />
 		{children}
 	</div>
