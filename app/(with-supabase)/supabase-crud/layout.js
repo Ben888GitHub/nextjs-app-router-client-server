@@ -5,7 +5,8 @@ const ubuntu = Ubuntu({
 	weight: '400',
 	subsets: ['latin'],
 	display: 'swap',
-	preload: false
+	preload: false,
+	variable: '--font-ubuntu'
 });
 
 const pageTitle = 'Supabase CRUD';
