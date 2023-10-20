@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const SupabaseLayout = ({ children }) => (
-	<div className={ubuntu.className}>
+	<div>
 		<Header pageTitle={pageTitle} />
 		{children}
 	</div>
