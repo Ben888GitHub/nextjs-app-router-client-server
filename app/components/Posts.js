@@ -13,8 +13,6 @@ const Posts = () => {
 
 	const handleAddPost = (e) => {
 		e.preventDefault();
-		console.log(posts);
-		console.log(title);
 		setPosts((currentPosts) => [
 			...currentPosts,
 			{
@@ -26,12 +24,15 @@ const Posts = () => {
 		setTitle('');
 	};
 
+	const handleDeletePost = (id) => {
+		setPosts((currentPosts) => currentPosts.filter((post) => post.id !== id));
+	};
+
 	return (
 		<div className="mt-7">
 			<p className="text-3xl mb-3">Posts Data</p>
 
 			<form className="mb-6" onSubmit={handleAddPost}>
-				{/* <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label> */}
 				<div className="relative">
 					<input
 						type="search"
@@ -62,6 +63,14 @@ const Posts = () => {
 					<p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
 						{description}
 					</p>
+
+					<button
+						onClick={() => handleDeletePost(id)}
+						type="button"
+						className="text-white bottom-2.5 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+					>
+						DELETE
+					</button>
 				</div>
 			))}
 		</div>
