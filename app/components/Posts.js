@@ -2,8 +2,8 @@
 
 import { useState, useMemo, Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { generate } from 'random-words';
 import useLocalStorageState from 'use-local-storage-state';
+import { generate } from 'random-words';
 import SearchPosts from './SearchPosts';
 import Post from './Post';
 import AddNewPost from './AddNewPost';
