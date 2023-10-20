@@ -5,7 +5,7 @@ const ubuntu = Ubuntu({
 	weight: '400',
 	subsets: ['latin'],
 	display: 'swap',
-	preload: false
+	preload: true
 });
 
 const pageTitle = 'Supabase CRUD';
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 const SupabaseLayout = ({ children }) => (
-	<div lang="en" className={ubuntu.className}>
+	<div className={ubuntu.className}>
 		<Header pageTitle={pageTitle} />
 		{children}
 	</div>

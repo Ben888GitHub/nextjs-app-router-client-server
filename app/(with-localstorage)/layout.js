@@ -4,7 +4,7 @@ import Header from '../components/Header';
 const inter = Inter({
 	subsets: ['latin'],
 	display: 'swap',
-	preload: false
+	preload: true
 });
 
 const pageTitle = 'Local Storage State';
@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 const LocalStorageLayout = ({ children }) => (
-	<div lang="en" className={inter.className}>
+	<div>
 		<Header pageTitle={pageTitle} />
 		{children}
 	</div>
