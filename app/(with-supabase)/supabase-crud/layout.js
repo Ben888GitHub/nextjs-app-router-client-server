@@ -1,7 +1,7 @@
 import Header from '@/app/components/Header';
-import { Ubuntu } from 'next/font/google';
+// import { Ubuntu } from 'next/font/google';
 
-const ubuntu = Ubuntu({ weight: '400', subsets: ['latin'], display: 'swap' });
+// const ubuntu = Ubuntu({ weight: '400', subsets: ['latin'], display: 'swap' });
 
 const pageTitle = 'Supabase CRUD';
 
@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const SupabaseLayout = ({ children }) => (
-	<div className={ubuntu.className}>
+	<div>
 		<Header pageTitle={pageTitle} />
 		{children}
 	</div>
