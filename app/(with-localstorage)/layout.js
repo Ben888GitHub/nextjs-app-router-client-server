@@ -11,10 +11,10 @@ export const metadata = {
 };
 
 const LocalStorageLayout = ({ children }) => (
-	<>
+	<div>
 		<Header pageTitle={pageTitle} />
 		{children}
-	</>
+	</div>
 );
 
 export default LocalStorageLayout;

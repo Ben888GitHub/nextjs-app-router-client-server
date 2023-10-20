@@ -11,10 +11,10 @@ export const metadata = {
 };
 
 const SupabaseLayout = ({ children }) => (
-	<>
+	<div>
 		<Header pageTitle={pageTitle} />
 		{children}
-	</>
+	</div>
 );
 
 export default SupabaseLayout;
