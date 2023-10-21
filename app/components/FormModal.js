@@ -28,7 +28,7 @@ const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 			setPostTitle('');
 		}
 		setLoading(false);
-		router.refresh();
+		// router.refresh();
 	};
 
 	return (

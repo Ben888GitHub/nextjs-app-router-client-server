@@ -1,6 +1,7 @@
 import Article from '@/app/components/Article';
 import FormDialog from '@/app/components/FormDialog';
 import Post from '@/app/components/Post';
+import RealTimePosts from '@/app/components/RealTimePOsts';
 import { supabaseClient } from '@/lib/utils';
 
 // * revalidate = 0 means this page is dynamic and data-driven
@@ -27,7 +28,8 @@ const SupabaseCrud = async () => {
 			<FormDialog />
 
 			<div className="mt-7">
-				{data && data.map((post) => <Post key={post.id} {...post} />)}
+				{/* {data && data.map((post) => <Post key={post.id} {...post} />)} */}
+				<RealTimePosts serverPosts={data} />
 			</div>
 		</>
 	);
