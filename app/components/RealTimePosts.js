@@ -58,8 +58,6 @@ const RealTimePosts = ({ serverPosts }) => {
 
 	return (
 		<>
-			{/* {serverPosts &&
-				serverPosts.map((post) => <Post key={post.id} {...post} />)} */}
 			{posts &&
 				posts.map((post) => (
 					<Fragment key={post.id}>
@@ -71,7 +69,6 @@ const RealTimePosts = ({ serverPosts }) => {
 						/>
 					</Fragment>
 				))}
-			{/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
 		</>
 	);
 };
