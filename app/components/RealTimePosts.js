@@ -8,8 +8,9 @@ import Post from './Post';
 const RealTimePosts = ({ serverPosts }) => {
 	const [posts, setPosts] = useState(serverPosts);
 
-	// todo, use this as the id to delete item in real time
 	const [idToDelete, setIdToDelete] = useState('');
+
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
 		// console.log(serverPosts);
@@ -40,7 +41,9 @@ const RealTimePosts = ({ serverPosts }) => {
 
 	const handleDeletePost = async (id) => {
 		// setPosts((currentPosts) => currentPosts.filter((post) => post.id !== id));
+		setIsDeleting(true);
 		setIdToDelete(id);
+
 		const { error } = await supabaseClient.from('posts').delete().eq('id', id);
 
 		if (error) {
@@ -48,6 +51,7 @@ const RealTimePosts = ({ serverPosts }) => {
 		} else {
 			console.log('successfully deleted');
 		}
+		setIsDeleting(false);
 	};
 
 	return (
@@ -57,7 +61,12 @@ const RealTimePosts = ({ serverPosts }) => {
 			{posts &&
 				posts.map((post) => (
 					<Fragment key={post.id}>
-						<Post {...post} handleDeletePost={handleDeletePost} />
+						<Post
+							{...post}
+							handleDeletePost={handleDeletePost}
+							isDeleting={isDeleting}
+							idToDelete={idToDelete}
+						/>
 					</Fragment>
 				))}
 			{/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
