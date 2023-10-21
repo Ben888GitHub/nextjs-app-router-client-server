@@ -11,14 +11,14 @@ const RealTimePosts = ({ serverPosts }) => {
 	}, [serverPosts]);
 
 	useEffect(() => {
-		console.log(serverPosts);
+		// console.log(serverPosts);
 		const channel = supabaseClient
 			.channel('*')
 			.on(
 				'postgres_changes',
 				{ event: '*', schema: 'public', table: 'posts' },
 				(payload) => {
-					console.log('Change received!', payload);
+					// console.log('Change received!', payload);
 					// console.log(serverPosts);
 					setPosts((currentPosts) => [...currentPosts, payload.new]);
 				}
