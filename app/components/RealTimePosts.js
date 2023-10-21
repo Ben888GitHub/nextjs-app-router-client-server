@@ -13,6 +13,10 @@ const RealTimePosts = ({ serverPosts }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
+		setPosts(serverPosts);
+	}, [serverPosts]);
+
+	useEffect(() => {
 		const channel = supabaseClient
 			.channel('*')
 			.on(
