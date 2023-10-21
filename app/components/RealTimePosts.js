@@ -13,10 +13,6 @@ const RealTimePosts = ({ serverPosts }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
-		setPosts(serverPosts);
-	}, [serverPosts]);
-
-	useEffect(() => {
 		const channel = supabaseClient
 			.channel('*')
 			.on(
@@ -27,16 +23,13 @@ const RealTimePosts = ({ serverPosts }) => {
 					table: 'posts'
 				},
 				(payload) => {
-					console.log('Change received!', payload);
-					// console.log(serverPosts);
+					// console.log('Change received!', payload);
 					if (payload.eventType === 'DELETE') {
-						// console.log(payload.id);
 						setPosts((currentPosts) =>
 							currentPosts.filter(({ id }) => id !== payload.old.id)
 						);
 						setIdToDelete('');
 					} else {
-						console.log('add post');
 						setPosts((currentPosts) => [...currentPosts, payload.new]);
 					}
 				}
