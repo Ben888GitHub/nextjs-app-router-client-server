@@ -6,9 +6,9 @@ import Post from './Post';
 const RealTimePosts = ({ serverPosts }) => {
 	const [posts, setPosts] = useState(serverPosts);
 
-	useEffect(() => {
-		setPosts(serverPosts);
-	}, [serverPosts]);
+	// useEffect(() => {
+	// 	setPosts(serverPosts);
+	// }, [serverPosts]);
 
 	useEffect(() => {
 		// console.log(serverPosts);
