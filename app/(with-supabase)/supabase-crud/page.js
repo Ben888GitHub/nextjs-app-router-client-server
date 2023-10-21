@@ -3,6 +3,8 @@ import FormDialog from '@/app/components/FormDialog';
 import Post from '@/app/components/Post';
 import { supabaseClient } from '@/lib/utils';
 
+export const revalidate = 0;
+
 const articleData = {
 	title: 'Supabase CRUD',
 	fontFamily: 'Ubuntu',
@@ -14,6 +16,8 @@ const articleData = {
 
 const SupabaseCrud = async () => {
 	const { data } = await supabaseClient.from('posts').select('*');
+
+	// data && console.log(data);
 
 	return (
 		<>

@@ -1,11 +1,32 @@
 // 'use client';
 
-import { ubuntu } from '@/lib/utils';
+import { supabaseClient, ubuntu } from '@/lib/utils';
 import { Dialog, Transition } from '@headlessui/react';
 import { useState, Fragment } from 'react';
+import { generate } from 'random-words';
 
 const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 	const [postTitle, setPostTitle] = useState('');
+
+	const handleAddPost = async () => {
+		const { data, error } = await supabaseClient
+			.from('posts')
+			.insert({
+				title: postTitle,
+				description: generate({ exactly: 5, join: ' ' }),
+				image: generate({ minLength: 2 })
+			})
+			.select('*')
+			.single();
+
+		if (error) {
+			console.log(error);
+		} else {
+			console.log(data);
+			setOpen(false);
+			setPostTitle('');
+		}
+	};
 
 	return (
 		<Transition.Root show={open} as={Fragment}>
@@ -69,10 +90,7 @@ const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 										type="button"
 										className=" w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-lg font-semibold text-white  shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
 										disabled={postTitle.length < 7}
-										onClick={() => {
-											setOpen(false);
-											setPostTitle('');
-										}}
+										onClick={handleAddPost}
 									>
 										ADD NEW POST
 									</button>
