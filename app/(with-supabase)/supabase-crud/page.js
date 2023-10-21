@@ -3,6 +3,7 @@ import FormDialog from '@/app/components/FormDialog';
 import Post from '@/app/components/Post';
 import { supabaseClient } from '@/lib/utils';
 
+// * revalidate = 0 means this page is dynamic and data-driven
 export const revalidate = 0;
 
 const articleData = {
