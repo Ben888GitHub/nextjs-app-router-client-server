@@ -5,6 +5,8 @@ import Post from './Post';
 
 // * Reference https://www.youtube.com/watch?v=YR-xP6PPXXA
 
+let channel;
+
 const RealTimePosts = ({ serverPosts }) => {
 	const [posts, setPosts] = useState(serverPosts);
 
@@ -13,26 +15,36 @@ const RealTimePosts = ({ serverPosts }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
-		// console.log(serverPosts);
-		const channel = supabaseClient
-			.channel('*')
-			.on(
-				'postgres_changes',
-				{ event: '*', schema: 'public', table: 'posts' },
-				(payload) => {
-					console.log('Change received!', payload);
-					// console.log(serverPosts);
-					if (idToDelete) {
+		if (idToDelete) {
+			channel = supabaseClient
+				.channel('*')
+				.on(
+					'postgres_changes',
+					{ event: 'DELETE', schema: 'public', table: 'posts' },
+					(payload) => {
+						console.log('Deleted', payload);
+
 						setPosts((currentPosts) =>
 							currentPosts.filter(({ id }) => id !== idToDelete)
 						);
 						setIdToDelete('');
-					} else {
+					}
+				)
+				.subscribe();
+		} else {
+			channel = supabaseClient
+				.channel('*')
+				.on(
+					'postgres_changes',
+					{ event: 'INSERT', schema: 'public', table: 'posts' },
+					(payload) => {
+						console.log('Change received!', payload);
+
 						setPosts((currentPosts) => [...currentPosts, payload.new]);
 					}
-				}
-			)
-			.subscribe();
+				)
+				.subscribe();
+		}
 
 		return () => {
 			supabaseClient.removeChannel(channel);
