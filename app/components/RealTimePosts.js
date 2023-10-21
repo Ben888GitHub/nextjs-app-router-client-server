@@ -6,9 +6,9 @@ import Post from './Post';
 const RealTimePosts = ({ serverPosts }) => {
 	const [posts, setPosts] = useState(serverPosts);
 
-	// useEffect(() => {
-	// 	setPosts(serverPosts);
-	// }, [serverPosts]);
+	useEffect(() => {
+		setPosts(serverPosts);
+	}, [serverPosts]);
 
 	useEffect(() => {
 		// console.log(serverPosts);
@@ -18,7 +18,7 @@ const RealTimePosts = ({ serverPosts }) => {
 				'postgres_changes',
 				{ event: '*', schema: 'public', table: 'posts' },
 				(payload) => {
-					// console.log('Change received!', payload);
+					console.log('Change received!', payload);
 					// console.log(serverPosts);
 					setPosts((currentPosts) => [...currentPosts, payload.new]);
 				}
@@ -32,6 +32,8 @@ const RealTimePosts = ({ serverPosts }) => {
 
 	return (
 		<>
+			{/* {serverPosts &&
+				serverPosts.map((post) => <Post key={post.id} {...post} />)} */}
 			{posts && posts.map((post) => <Post key={post.id} {...post} />)}
 			{/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
 		</>
