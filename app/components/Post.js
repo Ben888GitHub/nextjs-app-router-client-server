@@ -17,7 +17,7 @@ const Post = ({
 		<p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
 			{description}
 		</p>
-		{pathname === '/' ? (
+		{pathname === '/' && (
 			<button
 				onClick={() => handleDeletePost(id)}
 				type="button"
@@ -25,7 +25,8 @@ const Post = ({
 			>
 				DELETE
 			</button>
-		) : (
+		)}
+		{image && (
 			<p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
 				{image}
 			</p>
