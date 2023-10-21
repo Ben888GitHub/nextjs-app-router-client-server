@@ -19,7 +19,7 @@ const SupabaseCrud = async () => {
 		<>
 			<Article {...articleData} />
 
-			<FormDialog />
+			{/* <FormDialog /> */}
 
 			<div className="mt-7">
 				{data && data.map((post) => <Post key={post.id} {...post} />)}
