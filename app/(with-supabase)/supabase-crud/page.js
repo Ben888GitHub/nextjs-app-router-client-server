@@ -1,7 +1,6 @@
 import Article from '@/app/components/Article';
 import Post from '@/app/components/Post';
 import { supabaseClient } from '@/lib/utils';
-import { Fragment } from 'react';
 
 const articleData = {
 	title: 'Supabase CRUD',
@@ -20,12 +19,7 @@ const SupabaseCrud = async () => {
 			<Article {...articleData} />
 
 			<div className="mt-7">
-				{data &&
-					data.map((post) => (
-						<Fragment key={post.id}>
-							<Post {...post} />
-						</Fragment>
-					))}
+				{data && data.map((post) => <Post key={post.id} {...post} />)}
 			</div>
 		</>
 	);
