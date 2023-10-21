@@ -12,7 +12,7 @@ const articleData = {
 };
 
 const SupabaseCrud = async () => {
-	const { data, error } = await supabaseClient.from('posts').select('*');
+	const { data } = await supabaseClient.from('posts').select('*');
 
 	return (
 		<>
