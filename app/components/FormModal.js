@@ -48,14 +48,14 @@ const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 							<Dialog.Panel className="relative transform overflow-hidden rounded-lg dark:bg-gray-700 bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
 								<div className="bg-white dark:bg-gray-700 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 									<div className="sm:flex sm:items-start">
-										<div className="mt-1  sm:ml-4 sm:mt-0 sm:text-left">
+										<div className="mt-1  sm:ml-4 sm:mt-0 sm:text-left ">
 											<Dialog.Title
 												as="h1"
 												className="lg:text-3xl text-2xl font-semibold leading-6 dark:text-white text-gray-900"
 											>
 												Add new post
 											</Dialog.Title>
-											<div className="mt-5 w-96">
+											<div className="mt-5 lg:w-96 w-80">
 												<input
 													type="text"
 													name="title"
