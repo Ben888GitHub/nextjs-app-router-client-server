@@ -32,8 +32,8 @@ const RealTimePosts = ({ serverPosts }) => {
 
 	return (
 		<>
-			{/* {posts && posts.map((post) => <Post key={post.id} {...post} />)} */}
-			<pre>{JSON.stringify(posts, null, 2)}</pre>
+			{posts && posts.map((post) => <Post key={post.id} {...post} />)}
+			{/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
 		</>
 	);
 };
