@@ -1,13 +1,5 @@
 import Header from '@/app/components/Header';
-import { Ubuntu } from 'next/font/google';
-
-const ubuntu = Ubuntu({
-	weight: '400',
-	subsets: ['latin'],
-	display: 'swap',
-	preload: false,
-	variable: '--font-ubuntu'
-});
+import { ubuntu } from '@/lib/utils';
 
 const pageTitle = 'Supabase CRUD';
 

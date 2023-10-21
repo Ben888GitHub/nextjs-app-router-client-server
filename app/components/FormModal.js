@@ -1,16 +1,9 @@
 // 'use client';
 
+import { ubuntu } from '@/lib/utils';
 import { Dialog, Transition } from '@headlessui/react';
 import { useState, Fragment } from 'react';
-import { Ubuntu } from 'next/font/google';
 
-const ubuntu = Ubuntu({
-	weight: '400',
-	subsets: ['latin'],
-	display: 'swap',
-	preload: false,
-	variable: '--font-ubuntu'
-});
 const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 	const [postTitle, setPostTitle] = useState('');
 
