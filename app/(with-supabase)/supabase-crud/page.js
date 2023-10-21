@@ -1,4 +1,5 @@
 import Article from '@/app/components/Article';
+import FormDialog from '@/app/components/FormDialog';
 import Post from '@/app/components/Post';
 import { supabaseClient } from '@/lib/utils';
 
@@ -17,6 +18,8 @@ const SupabaseCrud = async () => {
 	return (
 		<>
 			<Article {...articleData} />
+
+			<FormDialog />
 
 			<div className="mt-7">
 				{data && data.map((post) => <Post key={post.id} {...post} />)}
