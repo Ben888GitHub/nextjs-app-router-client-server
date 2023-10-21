@@ -1,7 +1,7 @@
 import Article from '@/app/components/Article';
 import FormDialog from '@/app/components/FormDialog';
-import Post from '@/app/components/Post';
-import RealTimePosts from '@/app/components/RealTimePOsts';
+// import Post from '@/app/components/Post';
+import RealTimePosts from '@/app/components/RealTimePosts';
 import { supabaseClient } from '@/lib/utils';
 
 // * revalidate = 0 means this page is dynamic and data-driven
