@@ -1,14 +1,15 @@
 'use client';
 import { supabaseClient } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import Post from './Post';
+
+// * Reference https://www.youtube.com/watch?v=YR-xP6PPXXA
 
 const RealTimePosts = ({ serverPosts }) => {
 	const [posts, setPosts] = useState(serverPosts);
 
-	useEffect(() => {
-		setPosts(serverPosts);
-	}, [serverPosts]);
+	// todo, use this as the id to delete item in real time
+	const [idToDelete, setIdToDelete] = useState('');
 
 	useEffect(() => {
 		// console.log(serverPosts);
@@ -20,7 +21,14 @@ const RealTimePosts = ({ serverPosts }) => {
 				(payload) => {
 					console.log('Change received!', payload);
 					// console.log(serverPosts);
-					setPosts((currentPosts) => [...currentPosts, payload.new]);
+					if (idToDelete) {
+						setPosts((currentPosts) =>
+							currentPosts.filter(({ id }) => id !== idToDelete)
+						);
+						setIdToDelete('');
+					} else {
+						setPosts((currentPosts) => [...currentPosts, payload.new]);
+					}
 				}
 			)
 			.subscribe();
@@ -28,13 +36,30 @@ const RealTimePosts = ({ serverPosts }) => {
 		return () => {
 			supabaseClient.removeChannel(channel);
 		};
-	}, [serverPosts]);
+	}, [serverPosts, idToDelete]);
+
+	const handleDeletePost = async (id) => {
+		// setPosts((currentPosts) => currentPosts.filter((post) => post.id !== id));
+		setIdToDelete(id);
+		const { error } = await supabaseClient.from('posts').delete().eq('id', id);
+
+		if (error) {
+			console.log(error);
+		} else {
+			console.log('successfully deleted');
+		}
+	};
 
 	return (
 		<>
 			{/* {serverPosts &&
 				serverPosts.map((post) => <Post key={post.id} {...post} />)} */}
-			{posts && posts.map((post) => <Post key={post.id} {...post} />)}
+			{posts &&
+				posts.map((post) => (
+					<Fragment key={post.id}>
+						<Post {...post} handleDeletePost={handleDeletePost} />
+					</Fragment>
+				))}
 			{/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
 		</>
 	);
