@@ -23,7 +23,8 @@ const FormModal = ({ open, setOpen, cancelButtonRef }) => {
 		if (error) {
 			console.log(error);
 		} else {
-			console.log(data);
+			// console.log(data);
+			// console.log('new post added');
 			setOpen(false);
 			setPostTitle('');
 		}

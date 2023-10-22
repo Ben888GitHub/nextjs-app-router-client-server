@@ -2,6 +2,7 @@
 import { supabaseClient } from '@/lib/utils';
 import { useEffect, useState, Fragment } from 'react';
 import Post from './Post';
+import { useRouter } from 'next/navigation';
 
 // * Reference https://www.youtube.com/watch?v=YR-xP6PPXXA
 
@@ -11,6 +12,8 @@ const RealTimePosts = ({ serverPosts }) => {
 	const [idToDelete, setIdToDelete] = useState('');
 
 	const [isDeleting, setIsDeleting] = useState(false);
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const channel = supabaseClient
@@ -25,12 +28,16 @@ const RealTimePosts = ({ serverPosts }) => {
 				(payload) => {
 					// console.log('Change received!', payload);
 					if (payload.eventType === 'DELETE') {
+						console.log('delete in posts');
 						setPosts((currentPosts) =>
 							currentPosts.filter(({ id }) => id !== payload.old.id)
 						);
 						setIdToDelete('');
+						router.refresh();
 					} else {
 						setPosts((currentPosts) => [...currentPosts, payload.new]);
+						// console.log('new post added realtime');
+						router.refresh();
 					}
 				}
 			)
@@ -53,6 +60,7 @@ const RealTimePosts = ({ serverPosts }) => {
 		} else {
 			console.log('successfully deleted');
 			setIsDeleting(false);
+			// router.refresh()
 		}
 	};
 

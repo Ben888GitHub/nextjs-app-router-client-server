@@ -1,8 +1,12 @@
 import Article from '@/app/components/Article';
 import FormDialog from '@/app/components/FormDialog';
+// import RealTimePosts from '@/app/components/RealTimePosts';
 
 import { supabaseClient } from '@/lib/utils';
 import dynamic from 'next/dynamic';
+
+export const revalidate = 0;
+// export const dynamic = 'force-dynamic';
 const RealTimePosts = dynamic(() => import('@/app/components/RealTimePosts'), {
 	ssr: false,
 	loading: () => (
@@ -28,7 +32,6 @@ const RealTimePosts = dynamic(() => import('@/app/components/RealTimePosts'), {
 });
 
 // * revalidate = 0 means this page is dynamic and data-driven
-export const revalidate = 0;
 
 const articleData = {
 	title: 'Supabase CRUD',
