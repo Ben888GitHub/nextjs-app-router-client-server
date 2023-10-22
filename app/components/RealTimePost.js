@@ -54,6 +54,7 @@ const RealTimePost = ({ serverPost, postId }) => {
 			// router.refresh();
 			!isDeleting && router.push('/supabase-crud');
 		}
+		router.refresh();
 	};
 
 	return (
