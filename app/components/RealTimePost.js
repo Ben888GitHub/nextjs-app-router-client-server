@@ -51,7 +51,8 @@ const RealTimePost = ({ serverPost }) => {
 		} else {
 			console.log('successfully deleted');
 			setIsDeleting(false);
-			redirect('/supabase-crud');
+			router.push('/supabase-crud');
+			// todo, should i use router.refresh()
 		}
 	};
 

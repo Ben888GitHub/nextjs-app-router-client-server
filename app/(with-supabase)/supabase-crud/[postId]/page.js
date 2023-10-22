@@ -17,17 +17,7 @@ const SingleDynamicPost = async ({ params: { postId } }) => {
 
 	return (
 		<>
-			{/* <RealTimePost serverPost={data} /> */}
-			{data &&
-				data.map((post) => (
-					<Post
-						key={post.id}
-						{...post}
-						// handleDeletePost={handleDeletePost}
-						// isDeleting={isDeleting}
-						// idToDelete={idToDelete}
-					/>
-				))}
+			<RealTimePost serverPost={data} />
 		</>
 	);
 };
