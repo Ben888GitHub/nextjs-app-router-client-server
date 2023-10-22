@@ -16,10 +16,6 @@ const RealTimePosts = ({ serverPosts }) => {
 	const router = useRouter();
 
 	useEffect(() => {
-		setPosts(serverPosts);
-	}, [serverPosts]);
-
-	useEffect(() => {
 		const channel = supabaseClient
 			.channel('*')
 			.on(
