@@ -5,7 +5,7 @@ import Post from './Post';
 import { useEffect, useState, Fragment } from 'react';
 import { useRouter, usePathname, redirect } from 'next/navigation';
 
-const RealTimePost = ({ serverPost }) => {
+const RealTimePost = ({ serverPost, postId }) => {
 	const router = useRouter();
 
 	const [post, setPost] = useState(serverPost);
@@ -66,6 +66,7 @@ const RealTimePost = ({ serverPost }) => {
 						handleDeletePost={handleDeletePost}
 						isDeleting={isDeleting}
 						idToDelete={idToDelete}
+						postId={postId}
 					/>
 				))}
 		</>

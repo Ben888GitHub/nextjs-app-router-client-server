@@ -1,5 +1,3 @@
-// Post
-import Post from '@/app/components/Post';
 import { supabaseClient } from '@/lib/utils';
 
 import RealTimePost from '@/app/components/RealTimePost';
@@ -17,7 +15,7 @@ const SingleDynamicPost = async ({ params: { postId } }) => {
 
 	return (
 		<>
-			<RealTimePost serverPost={data} />
+			<RealTimePost serverPost={data} postId={postId} />
 		</>
 	);
 };

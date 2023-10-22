@@ -8,9 +8,22 @@ const Post = ({
 	pathname,
 	image,
 	isDeleting,
-	idToDelete
+	idToDelete,
+	postId
 }) => (
 	<div className="text-center lg:max-w-2xl w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
+		{postId && (
+			<div className="mb-3">
+				<Link
+					prefetch={false}
+					href="/supabase-crud"
+					className="  text-base font-normal tracking-tight text-gray-900 dark:text-white hover:underline underline"
+				>
+					Back to Posts
+				</Link>
+				<br />
+			</div>
+		)}
 		{image ? (
 			<Link
 				prefetch={false}
